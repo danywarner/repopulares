@@ -44,13 +44,31 @@ class RepoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        languageLbl.text = "\(language) repositories"
+        languageLbl.text = "Repositorios \(language) "
         downloadReposData()
         tableView.reloadData()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "repoDetailVC" {
+            
+            if let repoDetailVC = segue.destinationViewController as? RepoDetailVC {
+                
+                if let repo = sender as? Repository {
+                    
+                    repoDetailVC.repository = repo
+                }
+            }
+        }
     }
 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        var repo: Repository
+        repo = repositories[indexPath.row]
+        performSegueWithIdentifier("repoDetailVC", sender: repo)
         
     }
     
