@@ -22,7 +22,7 @@
 			<key>MinimumValue</key>
 			<integer>1</integer>
 			<key>MaximumValue</key>
-			<integer>20</integer>
+			<integer>30</integer>
 		</dict>
 	</array>
 </dict>

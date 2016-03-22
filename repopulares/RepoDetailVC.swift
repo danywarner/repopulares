@@ -38,15 +38,14 @@ class RepoDetailVC: UIViewController {
         super.viewDidLoad()
         setLabelsTexts()
         downloadContributors()
-        //downloadCommits()
+        downloadCommits()
         loadSettings()
     }
     
     func loadSettings() {
         let standardUserDefaults = NSUserDefaults.standardUserDefaults()
         if let gg = standardUserDefaults.objectForKey("commitsNumber_preference") as? Double {
-        
-                print(Int(gg))
+            print(Int(gg))
             
         } else {
             self.registerDefaultsFromSettingsBundle();
@@ -98,11 +97,18 @@ class RepoDetailVC: UIViewController {
     }
     
     func downloadCommits() {
-        Alamofire.request(.GET, repository.commitsUrl).responseJSON { response in
+        let g = "{/sha}"
+        let issuesUrl = repository.commitsUrl
+        let range = issuesUrl.rangeOfString(g)!
+        let intIndex: Int = issuesUrl.startIndex.distanceTo(range.startIndex)
+        let index1 = issuesUrl.startIndex.advancedBy(intIndex)
+        let newString = issuesUrl.substringToIndex(index1)
+        
+        Alamofire.request(.GET, newString).responseJSON { response in
             
             if let commits = response.result.value as? Array<AnyObject> {
                 
-                print(commits.count)
+                print("commits: \(commits.count)")
                 
                 /*
                 guard let contributor1 = contributors[0]["login"] as? String else {return}
