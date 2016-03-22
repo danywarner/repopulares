@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		316B2F56A0FCC1FF76C89D86 /* Pods_repopulares.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C94DC92C05C6E1EE8D86A3 /* Pods_repopulares.framework */; };
 		651AE92C1CA1E7CB000C10D7 /* RepoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AE92B1CA1E7CB000C10D7 /* RepoDetailVC.swift */; };
+		6566DCAE1CA1F1F40086A65B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6566DCAD1CA1F1F40086A65B /* Settings.bundle */; };
 		657D0C5A1CA1CB82007D1105 /* RepoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D0C591CA1CB82007D1105 /* RepoListVC.swift */; };
 		657D0C5D1CA1CC1B007D1105 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D0C5C1CA1CC1B007D1105 /* DataService.swift */; };
 		657D0C611CA1D529007D1105 /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D0C601CA1D529007D1105 /* RepoCell.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		45924244799DD1EDB730A080 /* Pods-repopulares.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-repopulares.debug.xcconfig"; path = "Pods/Target Support Files/Pods-repopulares/Pods-repopulares.debug.xcconfig"; sourceTree = "<group>"; };
 		651AE92B1CA1E7CB000C10D7 /* RepoDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoDetailVC.swift; sourceTree = "<group>"; };
+		6566DCAD1CA1F1F40086A65B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		657D0C591CA1CB82007D1105 /* RepoListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoListVC.swift; sourceTree = "<group>"; };
 		657D0C5C1CA1CC1B007D1105 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		657D0C601CA1D529007D1105 /* RepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		65F583E21CA17C5D00130BDD = {
 			isa = PBXGroup;
 			children = (
+				6566DCAD1CA1F1F40086A65B /* Settings.bundle */,
 				65F583ED1CA17C5D00130BDD /* repopulares */,
 				65F583EC1CA17C5D00130BDD /* Products */,
 				D9094C4DC1B509C5ADC8AA8E /* Pods */,
@@ -196,6 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6566DCAE1CA1F1F40086A65B /* Settings.bundle in Resources */,
 				65F583F91CA17C5D00130BDD /* LaunchScreen.storyboard in Resources */,
 				65F583F61CA17C5D00130BDD /* Assets.xcassets in Resources */,
 				65F583F41CA17C5D00130BDD /* Main.storyboard in Resources */,
