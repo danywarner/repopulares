@@ -23,6 +23,10 @@ class RepoDetailVC: UIViewController {
     @IBOutlet weak var commit3Lbl: UILabel!
     
     private var _repository: Repository?
+    private var settingsParameter: Int?
+    
+
+    var counter = 1
     
     var repository: Repository {
         get {
@@ -45,7 +49,8 @@ class RepoDetailVC: UIViewController {
     func loadSettings() {
         let standardUserDefaults = NSUserDefaults.standardUserDefaults()
         if let gg = standardUserDefaults.objectForKey("commitsNumber_preference") as? Double {
-            print(Int(gg))
+            print("parametro: \(Int(gg))")
+            settingsParameter = Int(gg)
             
         } else {
             self.registerDefaultsFromSettingsBundle();
@@ -96,7 +101,7 @@ class RepoDetailVC: UIViewController {
         }
     }
     
-    func downloadCommits() {
+    func downloadCommits()  {
         let g = "{/sha}"
         let issuesUrl = repository.commitsUrl
         let range = issuesUrl.rangeOfString(g)!
@@ -106,22 +111,34 @@ class RepoDetailVC: UIViewController {
         
         Alamofire.request(.GET, newString).responseJSON { response in
             
-            if let commits = response.result.value as? Array<AnyObject> {
+            if let resultsArray = response.result.value as? Array<AnyObject> {
+                guard let commit1 = resultsArray[0]["commit"] as? Dictionary<String, AnyObject> else { return }
+                guard let message1 = commit1["message"] as? String else{ return }
+                self.commit1Lbl.text = message1
                 
-                print("commits: \(commits.count)")
+                guard let commit2 = resultsArray[1]["commit"] as? Dictionary<String, AnyObject> else { return }
+                guard let message2 = commit2["message"] as? String else{ return }
+                self.commit2Lbl.text = message2
                 
-                /*
-                guard let contributor1 = contributors[0]["login"] as? String else {return}
-                guard let contributor2 = contributors[1]["login"] as? String else {return}
-                guard let contributor3 = contributors[2]["login"] as? String else {return}
-                self.contributor1Lbl.text = contributor1
-                self.contributor2Lbl.text = contributor2
-                self.contributor3Lbl.text = contributor3*/
+                guard let commit3 = resultsArray[2]["commit"] as? Dictionary<String, AnyObject> else { return }
+                guard let message3 = commit3["message"] as? String else{ return }
+                self.commit3Lbl.text = message3
+                
+                if self.settingsParameter != nil {
+                    for var x = 0 ; x < self.settingsParameter ; x++  {
+                        guard let commit = resultsArray[x]["commit"] as? Dictionary<String, AnyObject> else { return }
+                        guard let message = commit["message"] as? String else{ return }
+                        self.persistCommit(self.repository.name, message: message,counter: self.counter)
+                        self.counter += 1
+                    }
+                }
             }
         }
     }
-
-  
+    
+    func persistCommit(repository: String, message: String,counter: Int)  {
+        
+    }
 
     @IBAction func backBtnPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)

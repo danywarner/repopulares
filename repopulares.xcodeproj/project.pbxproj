@@ -14,6 +14,7 @@
 		657D0C5D1CA1CC1B007D1105 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D0C5C1CA1CC1B007D1105 /* DataService.swift */; };
 		657D0C611CA1D529007D1105 /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D0C601CA1D529007D1105 /* RepoCell.swift */; };
 		657D0C641CA1D5E2007D1105 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D0C631CA1D5E2007D1105 /* Repository.swift */; };
+		65E320DC1CA3077300B54846 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E320DB1CA3077300B54846 /* Database.swift */; };
 		65F583EF1CA17C5D00130BDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F583EE1CA17C5D00130BDD /* AppDelegate.swift */; };
 		65F583F11CA17C5D00130BDD /* InputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F583F01CA17C5D00130BDD /* InputVC.swift */; };
 		65F583F41CA17C5D00130BDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65F583F21CA17C5D00130BDD /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		657D0C5C1CA1CC1B007D1105 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		657D0C601CA1D529007D1105 /* RepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
 		657D0C631CA1D5E2007D1105 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		65E320DB1CA3077300B54846 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		65F583EB1CA17C5D00130BDD /* repopulares.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = repopulares.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F583EE1CA17C5D00130BDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65F583F01CA17C5D00130BDD /* InputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputVC.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				657D0C5C1CA1CC1B007D1105 /* DataService.swift */,
+				65E320DB1CA3077300B54846 /* Database.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				657D0C5A1CA1CB82007D1105 /* RepoListVC.swift in Sources */,
 				657D0C5D1CA1CC1B007D1105 /* DataService.swift in Sources */,
 				651AE92C1CA1E7CB000C10D7 /* RepoDetailVC.swift in Sources */,
+				65E320DC1CA3077300B54846 /* Database.swift in Sources */,
 				657D0C641CA1D5E2007D1105 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

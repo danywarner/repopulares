@@ -13,14 +13,18 @@ class InputVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var errorLbl: UILabel!
     @IBOutlet weak var input: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         input.delegate = self
+        
     }
 
     override func viewDidAppear(animated: Bool) {
         errorLbl.text = ""
     }
+
     
     @IBAction func okButtonPressed(sender: AnyObject) {
         if let language = input.text where language != "" {
