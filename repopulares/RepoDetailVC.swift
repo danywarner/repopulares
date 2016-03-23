@@ -25,8 +25,6 @@ class RepoDetailVC: UIViewController {
     private var _repository: Repository?
     private var settingsParameter: Int?
     
-
-    var counter = 1
     
     var repository: Repository {
         get {
@@ -44,6 +42,8 @@ class RepoDetailVC: UIViewController {
         downloadContributors()
         downloadCommits()
         loadSettings()
+        let repo = _repository!
+        try! repo.save(dbQueue)
     }
     
     func loadSettings() {
@@ -128,8 +128,9 @@ class RepoDetailVC: UIViewController {
                     for var x = 0 ; x < self.settingsParameter ; x++  {
                         guard let commit = resultsArray[x]["commit"] as? Dictionary<String, AnyObject> else { return }
                         guard let message = commit["message"] as? String else{ return }
-                        self.persistCommit(self.repository.name, message: message,counter: self.counter)
-                        self.counter += 1
+                        
+                        let com = Commit(idRepo: self.repository.name, message: message)
+                        try! com.save(dbQueue)
                     }
                 }
             }

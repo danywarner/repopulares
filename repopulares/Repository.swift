@@ -8,9 +8,10 @@
 
 
 import Foundation
+import GRDB
 
 
-class Repository {
+class Repository: Record {
     
     private var _name: String
     private var _avatarUrl: String
@@ -74,7 +75,6 @@ class Repository {
         }
     }
     
-    
     init(name: String, avatarUrl: String, description: String, author: String, contributorsUrl: String, commitsUrl: String) {
         _name = name
         _avatarUrl = avatarUrl
@@ -82,10 +82,34 @@ class Repository {
         _author = author
         _contributorsUrl = contributorsUrl
         _commitsUrl = commitsUrl
+        super.init()
     }
     
+    // MARK: - Record
     
+    override class func databaseTableName() -> String {
+        return "repository"
+    }
+
+    required init(_ row: Row) {
+        _name = row.value(named: "name")
+        _avatarUrl = row.value(named: "avatarUrl")
+        _repoDescription = row.value(named: "repoDescription")
+        _author = row.value(named: "author")
+        _contributorsUrl = row.value(named: "contributorsUrl")
+        _commitsUrl = row.value(named: "commitsUrl")
+        super.init(row)
+    }
     
-    
+    override var persistentDictionary: [String: DatabaseValueConvertible?] {
+        return [
+            "name": _name,
+            "avatarUrl": _avatarUrl,
+            "repoDescription": _repoDescription,
+            "author": _author,
+            "contributorsUrl": _contributorsUrl,
+            "commitsUrl": _commitsUrl
+        ]
+    }
     
 }

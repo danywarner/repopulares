@@ -51,15 +51,19 @@ func setupDatabase() {
 //                "lastName TEXT COLLATE localized_case_insensitive" +
 //            ")")
         try db.execute("CREATE TABLE repository (" +
-            "id TEXT PRIMARY KEY" +
+            "name TEXT PRIMARY KEY" +
+            "avatarUrl TEXT," +
+            "repoDescription TEXT," +
+            "author TEXT," +
+            "contributorsUrl TEXT," +
+            "commitsUrl TEXT" +
             ")")
     }
     
     migrator.registerMigration("createCommits") { db in
 
-        try db.execute("CREATE TABLE commitsByRepo (" +
-            "id INTEGER PRIMARY KEY, " +
-            "idRepo TEXT NOT NULL" +
+        try db.execute("CREATE TABLE commit (" +
+            "idRepo TEXT NOT NULL," +
             "message TEXT NOT NULL" +
             ")")
     
