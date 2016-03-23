@@ -125,7 +125,7 @@ class RepoDetailVC: UIViewController {
                 self.commit3Lbl.text = message3
                 
                 if self.settingsParameter != nil {
-                    for var x = 0 ; x < self.settingsParameter ; x++  {
+                    for var x = 0 ; x < self.settingsParameter ; x += 1  {
                         guard let commit = resultsArray[x]["commit"] as? Dictionary<String, AnyObject> else { return }
                         guard let message = commit["message"] as? String else{ return }
                         

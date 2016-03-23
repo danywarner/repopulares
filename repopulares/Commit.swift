@@ -44,7 +44,7 @@ class Commit: Record {
     // MARK: - Record
     
     override class func databaseTableName() -> String {
-        return "commit"
+        return "commitbyrepo"
     }
     
     required init(_ row: Row) {

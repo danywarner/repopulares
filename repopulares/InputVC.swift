@@ -41,9 +41,7 @@ class InputVC: UIViewController, UITextFieldDelegate {
                     } else {
                         self.errorLbl.text = "No se encontraron resultados!"
                     }
-                    
             }
-        
         }
     }
     
@@ -60,6 +58,19 @@ class InputVC: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    func deleteTables() {
+        try! dbQueue.execute("DELETE FROM repository")
+        try! dbQueue.execute("DELETE FROM commitbyrepo")
+        
+    }
+    
+    @IBAction func borrarData(sender: AnyObject) {
+        deleteTables()
+    }
+    @IBAction func viewConsulted(sender: AnyObject) {
+        performSegueWithIdentifier("consultadosVC", sender: nil)
+    }
+    
 
 }
-
