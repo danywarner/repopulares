@@ -25,7 +25,7 @@ class RepoDetailVC: UIViewController {
     @IBOutlet weak var commit3Lbl: UILabel!
     
     private var _repository: Repository?
-    private var settingsParameter: Int?
+    
     
     
     var repository: Repository {
@@ -43,44 +43,13 @@ class RepoDetailVC: UIViewController {
         setLabelsTexts()
         downloadContributors()
         downloadCommits()
-        loadSettings()
         let repo = _repository!
         try! repo.save(dbQueue)
     }
     
-    func loadSettings() {
-        let standardUserDefaults = NSUserDefaults.standardUserDefaults()
-        if let gg = standardUserDefaults.objectForKey("commitsNumber_preference") as? Double {
-            print("parametro: \(Int(gg))")
-            settingsParameter = Int(gg)
-            
-        } else {
-            self.registerDefaultsFromSettingsBundle();
-        }
-    }
     
-    func registerDefaultsFromSettingsBundle() {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        
-        if let settingsURL = NSBundle.mainBundle().URLForResource("Root", withExtension: "plist", subdirectory: "Settings.bundle"),
-            settings = NSDictionary(contentsOfURL: settingsURL),
-            preferences = settings["PreferenceSpecifiers"] as? [NSDictionary] {
-          
-            var defaultsToRegister = [String: AnyObject]()
-            for prefSpecification in preferences {
-                if let key = prefSpecification["Key"] as? String,
-                    value = prefSpecification["DefaultValue"] {
-                    
-                    defaultsToRegister[key] = value
-                    NSLog("registerDefaultsFromSettingsBundle: (\(key), \(value)) \(value.dynamicType)")
-                }
-            }
-            
-            userDefaults.registerDefaults(defaultsToRegister);
-        } else {
-            NSLog("registerDefaultsFromSettingsBundle: Could not find Settings.bundle");
-        }
-    }
+    
+    
     
     func setLabelsTexts() {
         repoTitleLbl.text = repository.name
@@ -128,8 +97,8 @@ class RepoDetailVC: UIViewController {
                 guard let message3 = commit3["message"] as? String else{ return }
                 self.commit3Lbl.text = message3
                 
-                if self.settingsParameter != nil {
-                    for var x = 0 ; x < self.settingsParameter ; x += 1  {
+                
+                    for x in 0  ..< 30   {
                         guard let commit = resultsArray[x]["commit"] as? Dictionary<String, AnyObject> else { return }
                         guard let message = commit["message"] as? String else{ return }
                         
@@ -137,7 +106,6 @@ class RepoDetailVC: UIViewController {
                         try! com.save(dbQueue)
                     }
                 }
-            }
         }
     }
     

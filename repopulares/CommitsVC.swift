@@ -13,8 +13,12 @@ class CommitsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     var repoName = ""
     var commits: [Commit] = []
+    private var settingsParameter: Int?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSettings()
         tableView.delegate = self
         tableView.dataSource = self
         commits = Commit.fetchAll(dbQueue, "SELECT * FROM commitbyrepo where idRepo='\(repoName)'")
@@ -23,7 +27,39 @@ class CommitsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     
+    func loadSettings() {
+        let standardUserDefaults = NSUserDefaults.standardUserDefaults()
+        if let gg = standardUserDefaults.objectForKey("commitsNumber_preference") as? Double {
+            print("parametro: \(Int(gg))")
+            settingsParameter = Int(gg)
+            
+        } else {
+            self.registerDefaultsFromSettingsBundle();
+        }
+    }
     
+    func registerDefaultsFromSettingsBundle() {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if let settingsURL = NSBundle.mainBundle().URLForResource("Root", withExtension: "plist", subdirectory: "Settings.bundle"),
+            settings = NSDictionary(contentsOfURL: settingsURL),
+            preferences = settings["PreferenceSpecifiers"] as? [NSDictionary] {
+            
+            var defaultsToRegister = [String: AnyObject]()
+            for prefSpecification in preferences {
+                if let key = prefSpecification["Key"] as? String,
+                    value = prefSpecification["DefaultValue"] {
+                    
+                    defaultsToRegister[key] = value
+                    NSLog("registerDefaultsFromSettingsBundle: (\(key), \(value)) \(value.dynamicType)")
+                }
+            }
+            
+            userDefaults.registerDefaults(defaultsToRegister);
+        } else {
+            NSLog("registerDefaultsFromSettingsBundle: Could not find Settings.bundle");
+        }
+    }
     
     
     
@@ -40,7 +76,11 @@ class CommitsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commits.count
+        if settingsParameter != nil {
+            return settingsParameter!
+        } else {
+            return commits.count
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
