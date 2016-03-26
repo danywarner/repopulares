@@ -12,6 +12,8 @@ import Alamofire
 class RepoDetailVC: UIViewController {
 
     
+    @IBOutlet weak var forksLbl: UILabel!
+    @IBOutlet weak var starsLbl: UILabel!
     @IBOutlet weak var repoTitleLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var authorLbl: UILabel!
@@ -84,6 +86,8 @@ class RepoDetailVC: UIViewController {
         repoTitleLbl.text = repository.name
         descriptionLbl.text = repository.repoDescription
         authorLbl.text = repository.author
+        starsLbl.text = repository.starsNumber
+        forksLbl.text = repository.forksNumber
         
     }
     

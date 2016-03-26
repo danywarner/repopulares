@@ -14,6 +14,8 @@ import GRDB
 class Repository: Record {
     
     private var _name: String
+    private var _starsNumber: String
+    private var _forksNumber: String
     private var _avatarUrl: String
     private var _repoDescription: String
     private var _author: String
@@ -26,6 +28,24 @@ class Repository: Record {
         }
         set {
             _name = newValue
+        }
+    }
+    
+    var forksNumber: String {
+        get {
+            return _forksNumber
+        }
+        set {
+            _forksNumber = newValue
+        }
+    }
+    
+    var starsNumber: String {
+        get {
+            return _starsNumber
+        }
+        set {
+            _starsNumber = newValue
         }
     }
     
@@ -75,8 +95,10 @@ class Repository: Record {
         }
     }
     
-    init(name: String, avatarUrl: String, description: String, author: String, contributorsUrl: String, commitsUrl: String) {
+    init(name: String, starsNumber: String, forksNumber: String, avatarUrl: String, description: String, author: String, contributorsUrl: String, commitsUrl: String) {
         _name = name
+        _forksNumber = forksNumber
+        _starsNumber = starsNumber
         _avatarUrl = avatarUrl
         _repoDescription = description
         _author = author
@@ -93,6 +115,8 @@ class Repository: Record {
 
     required init(_ row: Row) {
         _name = row.value(named: "name")
+        _starsNumber = row.value(named: "starsNumber")
+        _forksNumber = row.value(named: "forksNumber")
         _avatarUrl = row.value(named: "avatarUrl")
         _repoDescription = row.value(named: "repoDescription")
         _author = row.value(named: "author")
@@ -104,6 +128,8 @@ class Repository: Record {
     override var persistentDictionary: [String: DatabaseValueConvertible?] {
         return [
             "name": _name,
+            "starsNumber": _starsNumber,
+            "forksNumber": _forksNumber,
             "avatarUrl": _avatarUrl,
             "repoDescription": _repoDescription,
             "author": _author,

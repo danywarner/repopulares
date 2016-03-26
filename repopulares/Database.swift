@@ -52,6 +52,8 @@ func setupDatabase() {
 //            ")")
         try db.execute("CREATE TABLE repository (" +
             "name TEXT PRIMARY KEY," +
+            "starsNumber TEXT," +
+            "forksNumber TEXT," +
             "avatarUrl TEXT," +
             "repoDescription TEXT," +
             "author TEXT," +

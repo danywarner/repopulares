@@ -102,13 +102,15 @@ class RepoListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         for item in itemsArray {
                             guard let repo = item as? AnyObject else {return}
                             guard let repoName = repo["name"] as? String else { print("error1"); return}
+                            guard let starsNumber = repo["stargazers_count"] as? Int else { print("error1"); return}
+                            guard let forksNumber = repo["forks_count"] as? Int else { print("error1"); return}
                             guard let repoDescription = repo["description"] as? String else { print("error2"); return}
                             guard let contributorsUrl = repo["contributors_url"] as? String else { print("error3"); return}
                             guard let commitsUrl = repo["commits_url"] as? String else { print("error4"); return}
                             guard let owner = repo["owner"] as? Dictionary<String, AnyObject> else { print("error5"); return}
                             guard let author = owner["login"] as? String else { print("error6"); return}
                             guard let avatarUrl = owner["avatar_url"] as? String else { print("error7"); return}
-                            let repo2 = Repository(name: repoName, avatarUrl: avatarUrl , description: repoDescription, author: author, contributorsUrl: contributorsUrl, commitsUrl: commitsUrl)
+                            let repo2 = Repository(name: repoName, starsNumber: String(starsNumber), forksNumber: String(forksNumber), avatarUrl: avatarUrl , description: repoDescription, author: author, contributorsUrl: contributorsUrl, commitsUrl: commitsUrl)
                             self.repositories.append(repo2)
                         }
                     }
