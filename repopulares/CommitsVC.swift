@@ -79,7 +79,7 @@ class CommitsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if settingsParameter != nil {
             return settingsParameter!
         } else {
-            return commits.count
+            return 1
         }
     }
     
