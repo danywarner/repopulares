@@ -87,6 +87,9 @@ class CommitsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return 1
     }
 
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+         return 100.0;
+    }
     
     
     @IBAction func backBtnPressed(sender: AnyObject) {

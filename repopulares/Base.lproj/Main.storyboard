@@ -360,17 +360,17 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4ZT-OK-AYt">
-                                <rect key="frame" x="20" y="54" width="560" height="526"/>
+                                <rect key="frame" x="0.0" y="46" width="600" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommitCell" id="A9J-qI-eeJ" customClass="CommitCell" customModule="repopulares" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A9J-qI-eeJ" id="cPB-QH-2K4">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUz-R1-FID">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUz-R1-FID">
                                                     <rect key="frame" x="8" y="11" width="218" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="218" id="0G9-H2-cUn"/>
@@ -396,11 +396,11 @@
                         <constraints>
                             <constraint firstItem="aQv-lA-3sq" firstAttribute="top" secondItem="exK-dL-zFt" secondAttribute="top" id="2Vx-Ma-imK"/>
                             <constraint firstAttribute="trailing" secondItem="aQv-lA-3sq" secondAttribute="trailing" id="CV0-gB-JrM"/>
-                            <constraint firstItem="4ZT-OK-AYt" firstAttribute="leading" secondItem="exK-dL-zFt" secondAttribute="leading" constant="20" id="OVu-dH-dsa"/>
+                            <constraint firstItem="4ZT-OK-AYt" firstAttribute="leading" secondItem="exK-dL-zFt" secondAttribute="leading" id="OVu-dH-dsa"/>
                             <constraint firstItem="aQv-lA-3sq" firstAttribute="leading" secondItem="exK-dL-zFt" secondAttribute="leading" id="UMV-xD-mpd"/>
-                            <constraint firstItem="RgD-hj-ycZ" firstAttribute="top" secondItem="4ZT-OK-AYt" secondAttribute="bottom" constant="20" id="Y9L-j7-wtb"/>
-                            <constraint firstItem="4ZT-OK-AYt" firstAttribute="top" secondItem="aQv-lA-3sq" secondAttribute="bottom" constant="8" id="faA-KS-6Lt"/>
-                            <constraint firstAttribute="trailing" secondItem="4ZT-OK-AYt" secondAttribute="trailing" constant="20" id="iyN-bO-0Xm"/>
+                            <constraint firstItem="RgD-hj-ycZ" firstAttribute="top" secondItem="4ZT-OK-AYt" secondAttribute="bottom" id="Y9L-j7-wtb"/>
+                            <constraint firstItem="4ZT-OK-AYt" firstAttribute="top" secondItem="aQv-lA-3sq" secondAttribute="bottom" id="faA-KS-6Lt"/>
+                            <constraint firstAttribute="trailing" secondItem="4ZT-OK-AYt" secondAttribute="trailing" id="iyN-bO-0Xm"/>
                         </constraints>
                     </view>
                     <connections>
